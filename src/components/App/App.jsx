@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import * as mdb from 'mdb-ui-kit';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -14,11 +16,10 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import Homepage from '../Homepage/Homepage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPage'
 
 import './App.css';
 
@@ -34,7 +35,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {user.id && <Nav />}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -55,9 +56,9 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/homepage"
           >
-            <UserPage />
+            <Homepage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -75,40 +76,19 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/homepage" />
               :
               // Otherwise, show the login page
               <LoginPage />
             }
           </Route>
 
-          <Route
+          <ProtectedRoute
             exact
-            path="/registration"
+            path="/morning-reflection"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <RegisterPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
+            <MorningReflectionPage />
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
