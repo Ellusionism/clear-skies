@@ -6,8 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import * as mdb from 'mdb-ui-kit';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -19,9 +17,16 @@ import AboutPage from '../AboutPage/AboutPage';
 import Homepage from '../Homepage/Homepage';
 import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
 import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPage'
 
 import './App.css';
+
+async function load() {
+  let mdb = await import('mdb-ui-kit');
+  mdb();
+}
+
 
 function App() {
   const dispatch = useDispatch();
@@ -38,16 +43,7 @@ function App() {
         {user.id && <Nav />}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
-
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
+          <Redirect exact from="/" to="/user" />
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -82,6 +78,21 @@ function App() {
               <LoginPage />
             }
           </Route>
+
+          <Route
+            exact
+            path="/register"
+          >
+            {user.id ?
+              // If the user is already logged in, 
+              // redirect to the /user page
+              <Redirect to="/homepage" />
+              :
+              // Otherwise, show the login page
+              <RegisterPage />
+            }
+          </Route>
+
 
           <ProtectedRoute
             exact

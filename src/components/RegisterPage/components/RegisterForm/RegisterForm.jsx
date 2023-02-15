@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-function LoginForm() {
+function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -49,31 +49,31 @@ function LoginForm() {
 <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
   <li className="nav-item" role="presentation">
     <a
-      className="nav-link active"
+      className="nav-link"
       id="tab-login"
       data-mdb-toggle="pill"
       href="#login"
       role="tab"
       aria-controls="pills-login"
-      aria-selected="true"
+      aria-selected="false"
       >Login</a>
   </li>
   <li className="nav-item" role="presentation">
     <a
-      className="nav-link"
+      className="nav-link active"
       id="tab-register"
       data-mdb-toggle="pill"
       href="#register"
       role="tab"
       aria-controls="pills-register"
-      aria-selected="false"
+      aria-selected="true"
       >Register</a>
   </li>
 </ul>
 
 {/* Pills content */}
 <div className="tab-content">
-  <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+  <div className="tab-pane fade show" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
     <form className="text-center" onSubmit={login}>
 
     {errors.loginMessage && (
@@ -119,7 +119,7 @@ function LoginForm() {
 
     </form>
   </div>
-  <div className="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+  <div className="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
     <form className="text-center" onSubmit={registerUser}>
     
     {errors.registrationMessage && (
@@ -224,4 +224,4 @@ function LoginForm() {
   
 
 
-export default LoginForm;
+export default RegisterForm;

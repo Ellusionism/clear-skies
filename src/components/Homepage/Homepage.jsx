@@ -19,13 +19,13 @@ function UserPage() {
 
   return (
     <>
-      <h2 >Welcome, {user.name}!</h2>
+      <h2 className="top-buffer text-center">Welcome, {user.name}!</h2>
       <div className="d-grid gap-2">
-        <button className="btn btn-primary"
+        <button className="btn btn-primary top-buffer"
         type="button"
         onClick={event => morningReflectionClickHandler(event)}>
         Morning Reflection</button>
-        <button className="btn btn-primary"
+        <button className="btn btn-primary top-buffer"
         type="button"
         onClick={event => eveningReflectionClickHandler(event)}>
         Evening Reflection</button>
