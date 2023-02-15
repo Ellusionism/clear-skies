@@ -10,7 +10,7 @@ function* postMorningAnswers(action) {
     })
   }
   catch (error) {
-    console.log('User get request failed', error);
+    console.log('Error in morning.reflection.saga POST', error);
   }
 }
 
