@@ -40,6 +40,8 @@ function LoginForm() {
     } else {/* TODO error htmlFor passwords not matching */}
   }; // end registerUser
 
+  // TODO remove duplicate text
+  
   return (
     <>
     <div className="top-buffer"></div>

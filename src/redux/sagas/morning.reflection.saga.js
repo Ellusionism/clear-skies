@@ -1,20 +1,22 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "FETCH_USER" actions
-function* submitMorningAnswers() {
+function* postMorningAnswers(action) {
   try {
-    yield axios.post('/api/morning-reflection', )
-    };
-
-    yield put({ type: 'SET_USER', payload: response.data });
-  } catch (error) {
+    yield axios({
+      method: 'POST',
+      url: '/api/morning-reflection',
+      data: action.payload
+    })
+  }
+  catch (error) {
     console.log('User get request failed', error);
   }
 }
 
+
 function* userSaga() {
-  yield takeEvery('FETCH_USER', fetchUser);
+  yield takeEvery('POST_MORNING_ANSWERS', postMorningAnswers);
 }
 
 export default userSaga;
