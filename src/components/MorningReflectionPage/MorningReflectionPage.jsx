@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 
-function MorningReflectionForm() {
+function MorningReflectionPage() {
 
     const user = useSelector((store) => store.user);
 
@@ -14,6 +14,8 @@ function MorningReflectionForm() {
   const currentDate = date.format('YYYY-MM-DD');
 
   const [morningAnswers, setMorningAnswers] = useState({
+    user_id: user.id,
+    date: currentDate,
     looking_forward: '',
     greatest_challenge: '',
     three_tasks: '',
@@ -26,8 +28,6 @@ function MorningReflectionForm() {
     emotional_comment: '',
     love_in_life_rating: 0,
     love_in_life_comment: '',
-    user_id: user.id,
-    date: currentDate,
   });
 
   const handleChange = (event) => {
@@ -54,7 +54,7 @@ function MorningReflectionForm() {
 
   return (
     <form
-    className="text-center reflection-form"
+    className="text-center"
     onSubmit={handleSubmit}>
       <h2 className="top-buffer">Morning Reflection</h2>
 
@@ -332,7 +332,7 @@ function MorningReflectionForm() {
       </div>
 
       <div className="form-outline">
-        <p className="top-buffer">How would I rate the amount of <br></br> love in my life today?</p>
+        <p className="top-buffer">How would I rate the amount of love in my life today?</p>
         <div className="btn-group">
           <input
           type="radio"
@@ -409,4 +409,4 @@ function MorningReflectionForm() {
   )
 };
 
-export default MorningReflectionForm
+export default MorningReflectionPage;

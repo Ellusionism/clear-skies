@@ -18,14 +18,16 @@ import Homepage from '../Homepage/Homepage';
 import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPage'
+import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPage';
+import EveningReflectionPage from '../EveningReflectionPage/EveningReflectionPage';
 
 import './App.css';
+import * as mdb from 'mdb-ui-kit';
 
-async function load() {
-  let mdb = await import('mdb-ui-kit');
-  mdb();
-}
+// async function load() {
+//   let mdb = await import('mdb-ui-kit');
+//   mdb();
+// }
 
 
 function App() {
@@ -99,6 +101,13 @@ function App() {
             path="/morning-reflection"
           >
             <MorningReflectionPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/evening-reflection"
+          >
+            <EveningReflectionPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

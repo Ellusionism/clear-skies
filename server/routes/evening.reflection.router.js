@@ -9,44 +9,26 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const answers = req.body;
   const sqlQuery = `
-  INSERT INTO "morning_answers"
+  INSERT INTO "evening_answers"
   ("user_id",
   "date",
-  "looking_forward",
-  "greatest_challenge",
-  "three_tasks",
-  "attention_support",
-  "physical_rating",
-  "physical_comment",
-  "mental_rating",
-  "mental_comment",
-  "emotional_rating",
-  "emotional_comment",
-  "love_in_life_rating",
-  "love_in_life_comment")
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+  "three_positives",
+  "end_of_day_rating",
+  "end_of_day_comment")
+  VALUES ($1, $2, $3, $4, $5)
   `;
   const sqlValues = [
     answers.user_id,
     answers.date,
-    answers.looking_forward,
-    answers.greatest_challenge,
-    answers.three_tasks,
-    answers.attention_support,
-    answers.physical_rating,
-    answers.physical_comment,
-    answers.mental_rating,
-    answers.mental_comment,
-    answers.emotional_rating,
-    answers.emotional_comment,
-    answers.love_in_life_rating,
-    answers.love_in_life_comment
+    answers.three_positives,
+    answers.end_of_day_rating,
+    answers.end_of_day_comment
   ];
   pool.query(sqlQuery, sqlValues)
   .then((response) => {
     res.sendStatus(200);
   }).catch((error) => {
-    console.error('Error in morning.reflection.router POST:', error)
+    console.error('Error in evening.reflection.router POST:', error)
   })
 });
 

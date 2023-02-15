@@ -9,7 +9,8 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const morningReflectionRouter = require('./routes/morning.reflection.router')
+const morningReflectionRouter = require('./routes/morning.reflection.router');
+const eveningReflectionRouter = require('./routes/evening.reflection.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,7 +25,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/morning-reflection', morningReflectionRouter)
+app.use('/api/morning-reflection', morningReflectionRouter);
+app.use('/api/evening-reflection', eveningReflectionRouter);
 
 // Serve static files
 app.use(express.static('build'));
