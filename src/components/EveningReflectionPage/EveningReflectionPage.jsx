@@ -6,7 +6,8 @@ import moment from 'moment';
 function EveningReflectionPage() {
 
     const user = useSelector((store) => store.user);
-    const morningAnswers = useSelector((store) => store.morningReflection);
+    const morningAnswers = useSelector((store) => store.morningReflection.morningAnswers);
+    console.log(morningAnswers)
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,13 +61,62 @@ function EveningReflectionPage() {
 
       {/* <!-- Collapsed content --> */}
       <div className="collapse mt-3 scroll-section" id="morningAnswers">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-        squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-        ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-        accusamus labore sustainable VHS. 3 wolf moon officia aute, non cupidatat skateboard dolor
-        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-        put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What am I looking forward to the most today?</h6>
+            <p className="card-text">{morningAnswers.looking_forward}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What will be my greatest challenge today?</h6>
+            <p className="card-text">{morningAnswers.greatest_challenge}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What 3 tasks do I need to get done today?</h6>
+            <p className="card-text">{morningAnswers.three_tasks}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Who needs my attention/support most today?</h6>
+            <p className="card-text">{morningAnswers.attention_support}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Physical health rating: {morningAnswers.physical_rating}</h6>
+            <p className="card-text">{morningAnswers.physical_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Mental health rating: {morningAnswers.mental_rating}</h6>
+            <p className="card-text">{morningAnswers.mental_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Emotional health rating: {morningAnswers.emotional_rating}</h6>
+            <p className="card-text">{morningAnswers.emotional_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Love in life rating: {morningAnswers.love_in_life_rating}</h6>
+            <p className="card-text">{morningAnswers.love_in_life_comment}</p>
+          </div>
+        </div>
       </div>
 
       <form
