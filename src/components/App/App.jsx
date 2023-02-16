@@ -45,7 +45,7 @@ function App() {
         {user.id && <Nav />}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/user" />
+          <Redirect exact from="/" to="/homepage" />
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.

@@ -6,6 +6,8 @@ const morningAnswers = (state = '', action) => {
   switch (action.type) {
     case 'SET_MORNING_ANSWERS':
       return action.payload;
+    case 'SET_MORNING_REFLECTION':
+      return action.payload;
     default:
       return state;
   }
