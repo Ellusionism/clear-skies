@@ -18,7 +18,7 @@ function EveningReflectionPage() {
   const [eveningAnswers, setEveningAnswers] = useState({
     user_id: user.id,
     date: currentDate,
-    // morning_answer_id: morning_answer.id || null,
+    morning_answer_id: morningAnswers.id || null,
     three_positives: '',
     end_of_day_rating: 0,
     end_of_day_comment: '',
@@ -48,88 +48,85 @@ function EveningReflectionPage() {
 
   return (
     <div className="text-center">
-      <button
-      className="btn btn-primary top-buffer"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#morningAnswers"
-      aria-expanded="false"
-      aria-controls="morningAnswers"
-      >
-      Morning Answers
-    </button>
+    {morningAnswers && (
+      <>
+        <button
+        className="btn btn-primary top-buffer"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#morningAnswers"
+        aria-expanded="false"
+        aria-controls="morningAnswers"
+        >Morning Answers</button>
 
-      {/* <!-- Collapsed content --> */}
-      <div className="collapse mt-3 scroll-section" id="morningAnswers">
+        <div className="collapse mt-3 scroll-section" id="morningAnswers">
 
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">What am I looking forward to the most today?</h6>
-            <p className="card-text">{morningAnswers.looking_forward}</p>
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">What am I looking forward to the most today?</h6>
+              <p className="card-text">{morningAnswers.looking_forward}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">What will be my greatest challenge today?</h6>
+              <p className="card-text">{morningAnswers.greatest_challenge}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">What 3 tasks do I need to get done today?</h6>
+              <p className="card-text">{morningAnswers.three_tasks}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">Who needs my attention/support most today?</h6>
+              <p className="card-text">{morningAnswers.attention_support}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">Physical health rating: {morningAnswers.physical_rating}</h6>
+              <p className="card-text">{morningAnswers.physical_comment}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">Mental health rating: {morningAnswers.mental_rating}</h6>
+              <p className="card-text">{morningAnswers.mental_comment}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">Emotional health rating: {morningAnswers.emotional_rating}</h6>
+              <p className="card-text">{morningAnswers.emotional_comment}</p>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title">Love in life rating: {morningAnswers.love_in_life_rating}</h6>
+              <p className="card-text">{morningAnswers.love_in_life_comment}</p>
+            </div>
           </div>
         </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">What will be my greatest challenge today?</h6>
-            <p className="card-text">{morningAnswers.greatest_challenge}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">What 3 tasks do I need to get done today?</h6>
-            <p className="card-text">{morningAnswers.three_tasks}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">Who needs my attention/support most today?</h6>
-            <p className="card-text">{morningAnswers.attention_support}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">Physical health rating: {morningAnswers.physical_rating}</h6>
-            <p className="card-text">{morningAnswers.physical_comment}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">Mental health rating: {morningAnswers.mental_rating}</h6>
-            <p className="card-text">{morningAnswers.mental_comment}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">Emotional health rating: {morningAnswers.emotional_rating}</h6>
-            <p className="card-text">{morningAnswers.emotional_comment}</p>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="card-body">
-            <h6 className="card-title">Love in life rating: {morningAnswers.love_in_life_rating}</h6>
-            <p className="card-text">{morningAnswers.love_in_life_comment}</p>
-          </div>
-        </div>
-      </div>
+      </>
+    )}
 
       <form
-      className="text-center"
+      className="text-center reflection-form"
       onSubmit={handleSubmit}>
         <h2 className="top-buffer">Evening Reflection</h2>
 
         {/* looking_forward Input */}
         <div className="form-outline top-buffer">
-        <label
-        className="form-label"
-        htmlFor="three-positives"
-        >What were three positives from today?</label>
         <textarea
         required
         value={eveningAnswers.looking_forward}
@@ -138,7 +135,11 @@ function EveningReflectionPage() {
         id="three-positives"
         name="three_positives"
         className="form-control border" />
-        {/* comment input for looking forward prompt */}
+        <label
+        className="form-label"
+        htmlFor="three-positives"
+        >What were three positives from today?</label>
+        {/* comment input for three positives prompt */}
       </div>
 
         <div className="form-outline">
@@ -194,12 +195,9 @@ function EveningReflectionPage() {
             />
             <label className="btn btn-secondary" htmlFor="end-of-day-rating-5">5</label>
           </div>
-          {/* Radio button group for love in life rating */}
+          {/* Radio button group for end of day rating */}
         </div>
         <div className="form-outline top-buffer">
-        <label
-        className="form-label"
-        htmlFor="end-of-day-comment">What do I think most influenced the rating I gave?</label>
         <textarea
           required
           value={eveningAnswers.love_in_life_comment}
@@ -208,6 +206,9 @@ function EveningReflectionPage() {
           id="end-of-day-comment"
           name="end_of_day_comment"
           className="form-control border" />
+          <label
+        className="form-label"
+        htmlFor="end-of-day-comment">What do I think most influenced my rating?</label>
           {/* comment input for end of day rating */}
         </div>
 
