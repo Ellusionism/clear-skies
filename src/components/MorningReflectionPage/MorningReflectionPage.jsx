@@ -54,16 +54,12 @@ function MorningReflectionPage() {
 
   return (
     <form
-    className="text-center"
+    className="text-center reflection-form"
     onSubmit={handleSubmit}>
       <h2 className="top-buffer">Morning Reflection</h2>
 
       {/* looking_forward Input */}
       <div className="form-outline top-buffer">
-      <label
-      className="form-label"
-      htmlFor="looking-forward"
-      >What am I looking forward to the most today?</label>
       <textarea
       required
       value={morningAnswers.looking_forward}
@@ -72,14 +68,14 @@ function MorningReflectionPage() {
       id="looking-forward"
       name="looking_forward"
       className="form-control border" />
+      <label
+      className="form-label"
+      htmlFor="looking-forward"
+      >What am I looking forward to the most today?</label>
       {/* comment input for looking forward prompt */}
     </div>
 
       <div className="form-outline top-buffer">
-      <label
-        className="form-label"
-        htmlFor="greatest-challenge"
-        >What will be my greatest challenge today?</label>
         <textarea
         required
         value={morningAnswers.greatest_challenge}
@@ -88,14 +84,14 @@ function MorningReflectionPage() {
         id="greatest-challenge"
         name="greatest_challenge"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="greatest-challenge"
+        >What will be my greatest challenge today?</label>
         {/* comment input for greatest challenge prompt */}
       </div>
 
       <div className="form-outline top-buffer">
-      <label
-        className="form-label"
-        htmlFor="three-tasks"
-        >What 3 tasks do I need to get done today?</label>
         <textarea
         required
         value={morningAnswers.three_tasks}
@@ -104,14 +100,14 @@ function MorningReflectionPage() {
         id="three-tasks"
         name="three_tasks"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="three-tasks"
+        >What 3 tasks do I need to get done today?</label>
         {/* comment input for three tasks prompt */}
       </div>
 
       <div className="form-outline top-buffer">
-      <label
-        className="form-label"
-        htmlFor="attention-support"
-        >Who needs my attention/support most today?</label>
         <textarea
         required
         value={morningAnswers.attention_support}
@@ -120,6 +116,10 @@ function MorningReflectionPage() {
         id="attention-support"
         name="attention_support"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="attention-support"
+        >Who needs my attention/support most today?</label>
         {/* comment input for attention/support prompt */}
       </div>
 
@@ -179,10 +179,6 @@ function MorningReflectionPage() {
           {/* Radio button group for physical health rating */}
         </div>
         <div className="form-outline top-buffer">
-        <label
-        className="form-label"
-        htmlFor="physical-comment"
-        >If not a 5, how am I going to improve it today?</label>
         <textarea
         value={morningAnswers.physical_comment}
         onChange={handleChange}
@@ -190,6 +186,10 @@ function MorningReflectionPage() {
         id="physical-comment"
         name="physical_comment"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="physical-comment"
+        >If not a 5, what can I do to improve it today?</label>
         {/* comment input for physical health rating */}
         </div>
 
@@ -249,9 +249,6 @@ function MorningReflectionPage() {
         {/* Radio button group for mental health rating */}
       </div>
       <div className="form-outline top-buffer">
-      <label
-      className="form-label"
-      htmlFor="mental-comment">If not a 5, how am I going to improve it today?</label>
       <textarea
       value={morningAnswers.mental_comment}
       onChange={handleChange}
@@ -259,6 +256,9 @@ function MorningReflectionPage() {
       id="mental-comment"
       name="mental_comment"
       className="form-control border" />
+      <label
+      className="form-label"
+      htmlFor="mental-comment">If not a 5, what can I do to improve it today?</label>
       {/* comment input for mental health rating */}
       </div>
 
@@ -318,9 +318,6 @@ function MorningReflectionPage() {
         {/* Radio button group for emotional health rating */}
       </div>
       <div className="form-outline top-buffer">
-      <label
-      className="form-label"
-      htmlFor="emotional-comment">If not a 5, how am I going to improve it today?</label>
       <textarea
       value={morningAnswers.emotional_comment}
       onChange={handleChange}
@@ -328,6 +325,9 @@ function MorningReflectionPage() {
       id="emotional-comment"
       name="emotional_comment"
       className="form-control border" />
+      <label
+      className="form-label"
+      htmlFor="emotional-comment">If not a 5, what can I do to improve it today?</label>
       {/* comment input for emotional health rating */}
       </div>
 
@@ -387,9 +387,6 @@ function MorningReflectionPage() {
         {/* Radio button group for love in life rating */}
       </div>
       <div className="form-outline top-buffer">
-      <label
-      className="form-label"
-      htmlFor="love-in-life-comment">If not a 5, how am I going to improve it today?</label>
       <textarea
         value={morningAnswers.love_in_life_comment}
         onChange={handleChange}
@@ -397,6 +394,9 @@ function MorningReflectionPage() {
         id="love-in-life-comment"
         name="love_in_life_comment"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="love-in-life-comment">If not a 5, what can I do to improve it today?</label>
         {/* comment input for love in life rating */}
       </div>
 

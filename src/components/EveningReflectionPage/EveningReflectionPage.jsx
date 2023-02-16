@@ -48,6 +48,8 @@ function EveningReflectionPage() {
 
   return (
     <div className="text-center">
+    {morningAnswers && (
+      <>
         <button
         className="btn btn-primary top-buffer"
         type="button"
@@ -115,18 +117,16 @@ function EveningReflectionPage() {
             </div>
           </div>
         </div>
+      </>
+    )}
 
       <form
-      className="text-center"
+      className="text-center reflection-form"
       onSubmit={handleSubmit}>
         <h2 className="top-buffer">Evening Reflection</h2>
 
         {/* looking_forward Input */}
         <div className="form-outline top-buffer">
-        <label
-        className="form-label"
-        htmlFor="three-positives"
-        >What were three positives from today?</label>
         <textarea
         required
         value={eveningAnswers.looking_forward}
@@ -135,6 +135,10 @@ function EveningReflectionPage() {
         id="three-positives"
         name="three_positives"
         className="form-control border" />
+        <label
+        className="form-label"
+        htmlFor="three-positives"
+        >What were three positives from today?</label>
         {/* comment input for three positives prompt */}
       </div>
 
@@ -194,9 +198,6 @@ function EveningReflectionPage() {
           {/* Radio button group for end of day rating */}
         </div>
         <div className="form-outline top-buffer">
-        <label
-        className="form-label"
-        htmlFor="end-of-day-comment">What do I think most influenced the rating I gave?</label>
         <textarea
           required
           value={eveningAnswers.love_in_life_comment}
@@ -205,6 +206,9 @@ function EveningReflectionPage() {
           id="end-of-day-comment"
           name="end_of_day_comment"
           className="form-control border" />
+          <label
+        className="form-label"
+        htmlFor="end-of-day-comment">What do I think most influenced my rating?</label>
           {/* comment input for end of day rating */}
         </div>
 

@@ -2,19 +2,17 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const moment = require('moment');
-const useSelector = require('react-redux');
-
-const user = useSelector((store) => store.user);
 
 const date = moment();
   const currentDate = date.format('YYYY-MM-DD');
 
-router.get('/', (req, res) => {
+router.get(`/:id`, (req, res) => {
   const sqlQuery = `
   SELECT * FROM "morning_answers"
     WHERE "user_id" = $1 AND "date" = $2;
   `
-  const sqlValues = [req.body.user.id, currentDate];
+  console.log(req.params)
+  const sqlValues = [req.params.id, currentDate];
   pool.query(sqlQuery, sqlValues)
   .then((response) => {
     res.send(response.rows);

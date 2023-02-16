@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
   INSERT INTO "evening_answers"
   ("user_id",
   "date",
-  morning_answer_id,
+  morning_answers_id,
   "three_positives",
   "end_of_day_rating",
   "end_of_day_comment")
