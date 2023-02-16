@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import Homepage from '../Homepage/Homepage';
-import InfoPage from '../InfoPage/InfoPage';
+import ReviewPage from '../ReviewPage/ReviewPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPage';
@@ -60,11 +60,11 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows ReviewPage else shows LoginPage
             exact
-            path="/info"
+            path="/review"
           >
-            <InfoPage />
+            <ReviewPage />
           </ProtectedRoute>
 
           <Route

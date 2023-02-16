@@ -1,17 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LogOutButton from './components/LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const history = useHistory();
+
+  const reflectionLink = () => {
+    history.push('/homepage');
+  }
+
+  const reviewLink = () => {
+    history.push('/review');
+  }
 
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light">
         {/* Container wrapper */}
-        <div className="container">
+        <div className="container-fluid">
           {/* Toggle button */}
           <button
             className="navbar-toggler"
@@ -30,13 +39,20 @@ function Nav() {
             {/* Left links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="#">Dashboard</a>
+                <a
+                className="nav-link"
+                onClick={reflectionLink}
+                data-mdb-toggle="collapse"
+                data-mdb-target=".navbar-collapse.show"
+                >Reflections</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Team</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Projects</a>
+                <a
+                className="nav-link"
+                onClick={reviewLink}
+                data-mdb-toggle="collapse"
+                data-mdb-target=".navbar-collapse.show"
+                >Review</a>
               </li>
             </ul>
             {/* Left links */}
