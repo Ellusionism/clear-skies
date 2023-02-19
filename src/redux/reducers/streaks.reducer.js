@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
-const review = (state = [], action) => {
+const streaks = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_DEFAULT_REVIEW':
+    case 'SET_STREAKS':
+      console.log(action.payload);
       return action.payload;
     default:
       return state;
@@ -10,5 +11,5 @@ const review = (state = [], action) => {
 };
 
 export default combineReducers({
-  review,
+  streaks,
 });

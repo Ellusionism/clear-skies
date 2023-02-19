@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-function* updateDefaultReview(action) {
+function* getDefaultReview(action) {
   try {
     const id = action.payload;
     const response = yield axios({
@@ -19,7 +19,7 @@ function* updateDefaultReview(action) {
 }
 
 function* reviewSaga() {
-  yield takeEvery('UPDATE_DEFAULT_REVIEW', updateDefaultReview);
+  yield takeEvery('GET_DEFAULT_REVIEW', getDefaultReview);
 }
 
 export default reviewSaga;

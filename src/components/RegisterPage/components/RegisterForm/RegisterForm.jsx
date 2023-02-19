@@ -43,7 +43,7 @@ function RegisterForm() {
   <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
   <li className="nav-item" role="presentation">
     <a
-      className="nav-link"
+      className="nav-link ripple"
       id="tab-login"
       role="tab"
       onClick={goToLogin}
@@ -51,7 +51,7 @@ function RegisterForm() {
   </li>
   <li className="nav-item" role="presentation">
     <a
-      className="nav-link active"
+      className="nav-link bg-success ripple text-white active"
       id="tab-register"
       data-mdb-toggle="pill"
       href="#register"
@@ -68,11 +68,16 @@ function RegisterForm() {
   src="/images/clear_skies_logo.png"
   className="img-fluid top-buffer logo"
   alt="ClearSkies logo" />
-  <h2 className="top-buffer">Welcome to ClearSkies!</h2>
-  <p className="top-buffer">
-  Create a free account to start on your journey of self-awareness today!</p>
-  <div className="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    <form className="text-center" onSubmit={registerUser}>
+  <h2 className="top-buffer text-success">Welcome to ClearSkies!</h2>
+  <p>Create a free account to start on your journey of self-awareness today!</p>
+  <div
+  className="tab-pane fade show active"
+  id="pills-register"
+  role="tabpanel"
+  aria-labelledby="tab-register">
+    <form
+    className="text-center"
+    onSubmit={registerUser}>
     
     {errors.registrationMessage && (
         <h3 className="alert" role="alert">
@@ -85,11 +90,14 @@ function RegisterForm() {
         <input
         type="text"
         id="registerFirstName"
-        className="form-control"
+        className="form-control border"
         value={firstName}
         required
         onChange={(event) => setFirstName(event.target.value)} />
-        <label className="form-label" htmlFor="registerFirstName">First Name</label>
+        <label
+        className="form-label text-muted"
+        htmlFor="registerFirstName"
+        >First Name</label>
       </div>
 
       {/* Last name input */}
@@ -97,11 +105,14 @@ function RegisterForm() {
         <input
         type="text"
         id="registerLastName"
-        className="form-control"
+        className="form-control border"
         value={lastName}
         required
         onChange={(event) => setLastName(event.target.value)} />
-        <label className="form-label" htmlFor="registerLastName">Last Name</label>
+        <label
+        className="form-label text-muted"
+        htmlFor="registerLastName"
+        >Last Name</label>
       </div>
 
       {/* Username input */}
@@ -109,11 +120,14 @@ function RegisterForm() {
         <input
         type="text"
         id="registerUsername"
-        className="form-control"
+        className="form-control border"
         value={username}
         required
         onChange={(event) => setUsername(event.target.value)} />
-        <label className="form-label" htmlFor="registerUsername">Username</label>
+        <label
+        className="form-label text-muted"
+        htmlFor="registerUsername"
+        >Username</label>
       </div>
 
       {/* Password input */}
@@ -121,11 +135,14 @@ function RegisterForm() {
         <input
         type="password"
         id="registerPassword"
-        className="form-control"
+        className="form-control border"
         value={password}
         required
         onChange={(event) => setPassword(event.target.value)} />
-        <label className="form-label" htmlFor="registerPassword">Password</label>
+        <label
+        className="form-label text-muted"
+        htmlFor="registerPassword"
+        >Password</label>
       </div>
 
       {/* Confirm Password input */}
@@ -133,15 +150,21 @@ function RegisterForm() {
         <input
         type="password"
         id="registerConfirmPassword"
-        className="form-control"
+        className="form-control border"
         value={confirmPassword}
         required
         onChange={(event) => setConfirmPassword(event.target.value)} />
-        <label className="form-label" htmlFor="registerConfirmPassword">Confirm password</label>
+        <label
+        className="form-label text-muted"
+        htmlFor="registerConfirmPassword"
+        >Confirm Password</label>
       </div>
 
       {/* Submit button */}
-      <button type="submit" className="btn btn-rounded btn-primary mb-3">Register</button>
+      <button
+      type="submit"
+      className="btn btn-rounded btn-success ripple mb-3"
+      >Register</button>
     </form>
   </div>
 </div>

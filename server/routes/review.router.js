@@ -33,6 +33,7 @@ router.get('/:id', (req, res) => {
     res.send(response.rows);
   }).catch((error) => {
     console.error('Error in review.router GET:', error);
+    res.sendStatus(500);
   });
 });
 

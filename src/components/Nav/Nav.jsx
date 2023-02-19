@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, Link } from 'react';
 import { useHistory } from 'react-router-dom';
 import LogOutButton from './components/LogOutButton/LogOutButton';
 
@@ -55,8 +55,8 @@ function Nav() {
                 data-mdb-toggle="collapse"
                 data-mdb-target=".navbar-collapse.show"
                 >Review</a>
-                </li>
-                <li className="nav-item">
+              </li>
+              <li className="nav-item">
                 <a
                 className="nav-link"
                 onClick={aboutLink}
