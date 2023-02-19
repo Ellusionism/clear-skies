@@ -13,6 +13,7 @@ const morningReflectionRouter = require('./routes/morning.reflection.router');
 const eveningReflectionRouter = require('./routes/evening.reflection.router');
 const reviewRouter = require('./routes/review.router');
 const streaksRouter = require('./routes/streaks.router');
+const chartRouter = require('./routes/chart.router');
 
 
 // Body parser middleware
@@ -32,6 +33,7 @@ app.use('/api/morning-reflection', morningReflectionRouter);
 app.use('/api/evening-reflection', eveningReflectionRouter);
 app.use('/api/review', reviewRouter);
 app.use('/api/streaks', streaksRouter);
+app.use('/api/chart', chartRouter);
 
 // Serve static files
 app.use(express.static('build'));

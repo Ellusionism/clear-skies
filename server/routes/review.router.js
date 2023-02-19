@@ -27,8 +27,7 @@ router.get('/:id', (req, res) => {
     AND "evening_answers"."user_id" = $1
   ORDER BY "evening_answers"."date" DESC;
   `;
-  const sqlValues = [req.params.id];
-  pool.query(sqlQuery, sqlValues)
+  pool.query(sqlQuery, [req.params.id])
   .then((response) => {
     res.send(response.rows);
   }).catch((error) => {

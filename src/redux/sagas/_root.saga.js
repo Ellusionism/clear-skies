@@ -6,6 +6,7 @@ import morningReflectionSaga from './morning.reflection.saga';
 import eveningReflectionSaga from './evening.reflection.saga';
 import reviewSaga from './review.saga';
 import streaksSaga from './streaks.saga';
+import chartSaga from './chart.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     eveningReflectionSaga(),
     reviewSaga(),
     streaksSaga(),
+    chartSaga(),
   ]);
 }

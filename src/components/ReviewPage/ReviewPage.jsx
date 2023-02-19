@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ChartCard from './components/ChartCard/ChartCard';
 import DeleteUserButton from './components/DeleteUserButton/DeleteUserButton';
 import StreaksCard from './components/StreaksCard/StreaksCard';
 
@@ -22,8 +23,9 @@ function ReviewPage() {
 
   return (
     <div className="form text-center">
-      <DeleteUserButton />
       <StreaksCard />
+      <ChartCard />
+      <DeleteUserButton />
     </div>
     // <>
     //   {review.map((answer, i) =>{
