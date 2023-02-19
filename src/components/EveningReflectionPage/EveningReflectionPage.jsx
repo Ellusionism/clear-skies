@@ -18,7 +18,6 @@ function EveningReflectionPage() {
   const [eveningAnswers, setEveningAnswers] = useState({
     user_id: user.id,
     date: currentDate,
-    morning_answer_id: morningAnswers.id || null,
     three_positives: '',
     end_of_day_rating: 0,
     end_of_day_comment: '',
@@ -34,94 +33,89 @@ function EveningReflectionPage() {
   } // updates state for all radio inputs onClick
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     dispatch({
-      type: 'SET_EVENING_ANSWERS',
+      type: 'CREATE_EVENING_REFLECTION',
       payload: eveningAnswers
     })
     dispatch({
-      type: 'POST_EVENING_ANSWERS',
-      payload: eveningAnswers
+      type: 'SET_EVENING_REFLECTION',
+      payload: eveningAnswers,
     })
-    history.push('/homepage')
+    history.push('/home')
   } // submits all answers to the store, and returns the user to the homepage
 
   return (
     <div className="text-center">
-    {morningAnswers && (
-      <>
-        <button
-        className="btn btn-primary top-buffer"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#morningAnswers"
-        aria-expanded="false"
-        aria-controls="morningAnswers"
-        >Morning Answers</button>
+      <button
+      className="btn btn-rounded btn-primary top-buffer"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#morningAnswers"
+      aria-expanded="false"
+      aria-controls="morningAnswers"
+      >Morning Answers</button>
 
-        <div className="collapse mt-3 scroll-section" id="morningAnswers">
+      <div className="collapse mt-3 scroll-section" id="morningAnswers">
 
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">What am I looking forward to the most today?</h6>
-              <p className="card-text">{morningAnswers.looking_forward}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">What will be my greatest challenge today?</h6>
-              <p className="card-text">{morningAnswers.greatest_challenge}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">What 3 tasks do I need to get done today?</h6>
-              <p className="card-text">{morningAnswers.three_tasks}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">Who needs my attention/support most today?</h6>
-              <p className="card-text">{morningAnswers.attention_support}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">Physical health rating: {morningAnswers.physical_rating}</h6>
-              <p className="card-text">{morningAnswers.physical_comment}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">Mental health rating: {morningAnswers.mental_rating}</h6>
-              <p className="card-text">{morningAnswers.mental_comment}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">Emotional health rating: {morningAnswers.emotional_rating}</h6>
-              <p className="card-text">{morningAnswers.emotional_comment}</p>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title">Love in life rating: {morningAnswers.love_in_life_rating}</h6>
-              <p className="card-text">{morningAnswers.love_in_life_comment}</p>
-            </div>
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What am I looking forward to the most today?</h6>
+            <p className="card-text">{morningAnswers.looking_forward}</p>
           </div>
         </div>
-      </>
-    )}
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What will be my greatest challenge today?</h6>
+            <p className="card-text">{morningAnswers.greatest_challenge}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">What 3 tasks do I need to get done today?</h6>
+            <p className="card-text">{morningAnswers.three_tasks}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Who needs my attention/support most today?</h6>
+            <p className="card-text">{morningAnswers.attention_support}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Physical health rating: {morningAnswers.physical_rating}</h6>
+            <p className="card-text">{morningAnswers.physical_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Mental health rating: {morningAnswers.mental_rating}</h6>
+            <p className="card-text">{morningAnswers.mental_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Emotional health rating: {morningAnswers.emotional_rating}</h6>
+            <p className="card-text">{morningAnswers.emotional_comment}</p>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-title">Love in life rating: {morningAnswers.love_in_life_rating}</h6>
+            <p className="card-text">{morningAnswers.love_in_life_comment}</p>
+          </div>
+        </div>
+      </div>
 
       <form
-      className="text-center reflection-form"
+      className="text-center form"
       onSubmit={handleSubmit}>
         <h2 className="top-buffer">Evening Reflection</h2>
 
@@ -214,7 +208,7 @@ function EveningReflectionPage() {
 
         <button
         type="submit"
-        className="btn btn-primary mdb-3 top-buffer"
+        className="btn btn-rounded btn-primary mdb-3 top-buffer"
         >Submit Reflection</button> 
         {/* Handles submit of entire form */}
       </form>

@@ -4,10 +4,14 @@ button {
   margin: 1vh;
 }
 
-.reflection-form {
+.form {
   padding: 1vh;
 }
 
 .top-buffer {
   margin-top: 5vh;
+}
+
+.logo {
+  max-width: 60vw;
 }

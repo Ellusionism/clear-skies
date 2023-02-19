@@ -4,7 +4,7 @@ import RegisterForm from './components/RegisterForm/RegisterForm';
 function RegisterPage() {
 
   return (
-    <div>
+    <div className="form text-center">
       <RegisterForm />
     </div>
   );
