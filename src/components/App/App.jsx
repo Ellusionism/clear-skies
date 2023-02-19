@@ -45,19 +45,26 @@ function App() {
         {user.id && <Nav />}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/homepage" />
+          <Redirect exact from="/" to="/home" />
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows Homepage else shows LoginPage
             exact
-            path="/homepage"
+            path="/home"
           >
             <Homepage />
           </ProtectedRoute>
+
+          <Route
+            exact
+            path="/about"
+          >
+              <AboutPage />
+          </Route>
 
           <ProtectedRoute
             // logged in shows ReviewPage else shows LoginPage
@@ -73,8 +80,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/homepage" />
+              // redirect to the /home page
+              <Redirect to="/home" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -87,8 +94,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/homepage" />
+              // redirect to the /home page
+              <Redirect to="/home" />
               :
               // Otherwise, show the login page
               <RegisterPage />

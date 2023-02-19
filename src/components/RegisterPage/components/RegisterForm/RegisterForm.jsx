@@ -6,8 +6,11 @@ function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
   const errors = useSelector(store => store.errors);
+  
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,10 +24,13 @@ function RegisterForm() {
         payload: {
           username: username,
           password: password,
-          name: name,
+          first_name: firstName,
+          last_name: lastName,
         },
       });
-    } else {/* TODO error htmlFor passwords not matching */}
+    } else {
+      dispatch({ type: 'REGISTRATION_INPUT_ERROR' })
+    }
   }; // end registerUser
 
   const goToLogin = () => {
@@ -33,7 +39,6 @@ function RegisterForm() {
   
   return (
     <>
-    <div className="top-buffer"></div>
     {/* Pills navs */}
   <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
   <li className="nav-item" role="presentation">
@@ -58,7 +63,14 @@ function RegisterForm() {
 </ul>
 
 {/* Pills content */}
-<div className="tab-content">
+<div className="tab-content form">
+  <img
+  src="/images/clear_skies_logo.png"
+  className="img-fluid top-buffer logo"
+  alt="ClearSkies logo" />
+  <h2 className="top-buffer">Welcome to ClearSkies!</h2>
+  <p className="top-buffer">
+  Create a free account to start on your journey of self-awareness today!</p>
   <div className="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
     <form className="text-center" onSubmit={registerUser}>
     
@@ -68,17 +80,28 @@ function RegisterForm() {
         </h3>
       )}
 
-      {/* Name input */}
+      {/* First name input */}
       <div className="form-outline mb-4">
         <input
         type="text"
-        id="registerName"
+        id="registerFirstName"
         className="form-control"
-        value={name}
+        value={firstName}
         required
-        onChange={(event) => setName(event.target.value)}
-        />
-        <label className="form-label" htmlFor="registerName">Name</label>
+        onChange={(event) => setFirstName(event.target.value)} />
+        <label className="form-label" htmlFor="registerFirstName">First Name</label>
+      </div>
+
+      {/* Last name input */}
+      <div className="form-outline mb-4">
+        <input
+        type="text"
+        id="registerLastName"
+        className="form-control"
+        value={lastName}
+        required
+        onChange={(event) => setLastName(event.target.value)} />
+        <label className="form-label" htmlFor="registerLastName">Last Name</label>
       </div>
 
       {/* Username input */}
@@ -118,50 +141,12 @@ function RegisterForm() {
       </div>
 
       {/* Submit button */}
-      <button type="submit" className="btn btn-primary mb-3">Register</button>
+      <button type="submit" className="btn btn-rounded btn-primary mb-3">Register</button>
     </form>
   </div>
 </div>
 </>
 );
 }
-
-    {/* // <form className="formPanel" onSubmit={login}>
-    //   <h2>Login</h2>
-    //   {errors.loginMessage && (
-    //     <h3 className="alert" role="alert">
-    //       {errors.loginMessage}
-    //     </h3>
-    //   )}
-    //   <div>
-    //     <label htmlFor="username">
-    //       Username:
-    //       <input
-    //         type="text"
-    //         name="username"
-    //         required
-    //         value={username}
-    //         onChange={(event) => setUsername(event.target.value)}
-    //       />
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label htmlFor="password">
-    //       Password:
-    //       <input
-    //         type="password" 
-    //         name="password"
-    //         required
-    //         value={password}
-    //         onChange={(event) => setPassword(event.target.value)}
-    //       />
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <input className="btn" type="submit" name="submit" value="Log In" />
-    //   </div>
-    // </form> */}
-  
-
 
 export default RegisterForm;

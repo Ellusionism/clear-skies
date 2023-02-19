@@ -9,10 +9,12 @@ const date = moment();
 router.get(`/:id`, (req, res) => {
   const sqlQuery = `
   SELECT * FROM "morning_answers"
-    WHERE "user_id" = $1 AND "date" = $2;
+    WHERE "user_id" = $1
+    ORDER BY "id" DESC
+    LIMIT 1;
   `
   console.log(req.params)
-  const sqlValues = [req.params.id, currentDate];
+  const sqlValues = [req.params.id];
   pool.query(sqlQuery, sqlValues)
   .then((response) => {
     res.send(response.rows);

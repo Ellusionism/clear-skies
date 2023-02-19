@@ -31,7 +31,6 @@ function LoginForm() {
   
   return (
     <>
-    <div className="top-buffer"></div>
     {/* Pills navs */}
 <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
   <li className="nav-item" role="presentation">
@@ -56,7 +55,14 @@ function LoginForm() {
 </ul>
 
 {/* Pills content */}
-<div className="tab-content">
+<div className="tab-content form">
+<img
+  src="/images/clear_skies_logo.png"
+  className="img-fluid top-buffer logo"
+  alt="ClearSkies logo" />
+  <h2 className="top-buffer">Welcome back to ClearSkies!</h2>
+  <p className="top-buffer">
+  Please enter your login information to continue</p>
   <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
     <form className="text-center" onSubmit={login}>
 
@@ -99,7 +105,7 @@ function LoginForm() {
       </div>
 
       {/* Submit button */}
-      <button type="submit" className="btn btn-primary text-center mb-4">Log in</button>
+      <button type="submit" className="btn btn-rounded btn-primary text-center mb-4">Log in</button>
 
     </form>
   </div>

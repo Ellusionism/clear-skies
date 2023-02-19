@@ -12,6 +12,8 @@ const userRouter = require('./routes/user.router');
 const morningReflectionRouter = require('./routes/morning.reflection.router');
 const eveningReflectionRouter = require('./routes/evening.reflection.router');
 const reviewRouter = require('./routes/review.router');
+const streaksRouter = require('./routes/streaks.router');
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/morning-reflection', morningReflectionRouter);
 app.use('/api/evening-reflection', eveningReflectionRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/streaks', streaksRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -1,12 +1,33 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-function* postEveningAnswers(action) {
+function* createEveningReflection(action) {
   try {
     yield axios({
       method: 'POST',
       url: '/api/evening-reflection',
-      data: action.payload
+      data: action.payload,
+    })
+    yield put({
+      type: 'SET_EVENING_REFLECTION',
+      payload: action.payload,
+    })
+  }
+  catch (error) {
+    console.log('Error in evening.reflection.saga POST', error);
+  }
+}
+
+function* updateEveningReflectionStore(action) {
+  try {
+    const id = action.payload
+    const response = yield axios({
+      method: 'GET',
+      url: `/api/evening-reflection/${id}`,
+    })
+    yield put({
+      type: 'SET_EVENING_REFLECTION',
+      payload: response.data[0],
     })
   }
   catch (error) {
@@ -15,8 +36,9 @@ function* postEveningAnswers(action) {
 }
 
 
-function* userSaga() {
-  yield takeEvery('POST_EVENING_ANSWERS', postEveningAnswers);
+function* eveningReflectionSaga() {
+  yield takeEvery('CREATE_EVENING_REFLECTION', createEveningReflection)
+  yield takeEvery('UPDATE_REFLECTION_STORE', updateEveningReflectionStore);
 }
 
-export default userSaga;
+export default eveningReflectionSaga;

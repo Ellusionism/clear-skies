@@ -5,12 +5,12 @@ import moment from 'moment';
 
 function MorningReflectionPage() {
 
-    const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
-
   const date = moment();
+
   const currentDate = date.format('YYYY-MM-DD');
 
   const [morningAnswers, setMorningAnswers] = useState({
@@ -42,19 +42,19 @@ function MorningReflectionPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch({
-      type: 'SET_MORNING_ANSWERS',
+      type: 'CREATE_MORNING_REFLECTION',
       payload: morningAnswers
     })
     dispatch({
-      type: 'POST_MORNING_ANSWERS',
+      type: 'SET_MORNING_REFLECTION',
       payload: morningAnswers
     })
-    history.push('/homepage')
+    history.push('/home');
   } // submits all answers to the store, and returns the user to the homepage
 
   return (
     <form
-    className="text-center reflection-form"
+    className="text-center form"
     onSubmit={handleSubmit}>
       <h2 className="top-buffer">Morning Reflection</h2>
 
@@ -128,6 +128,7 @@ function MorningReflectionPage() {
           <div className="btn-group" required>
             <input
             type="radio"
+            required
             value={1}
             onChange={handleClick}
             className="btn-check"
@@ -138,6 +139,7 @@ function MorningReflectionPage() {
 
             <input
             type="radio"
+            required
             value={2}
             onChange={handleClick}
             className="btn-check"
@@ -148,6 +150,7 @@ function MorningReflectionPage() {
 
             <input
             type="radio"
+            required
             value={3}
             onChange={handleClick}
             className="btn-check"
@@ -158,6 +161,7 @@ function MorningReflectionPage() {
 
             <input
             type="radio"
+            required
             value={4}
             onChange={handleClick}
             className="btn-check"
@@ -168,6 +172,7 @@ function MorningReflectionPage() {
 
             <input
             type="radio"
+            required
             value={5}
             onChange={handleClick}
             className="btn-check"
@@ -198,6 +203,7 @@ function MorningReflectionPage() {
         <div className="btn-group">
           <input
           type="radio"
+          required
           value={1}
           onChange={handleClick}
           className="btn-check"
@@ -208,6 +214,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={2}
             onChange={handleClick}
           className="btn-check"
@@ -218,6 +225,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={3}
           onChange={handleClick}
           className="btn-check"
@@ -228,6 +236,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={4}
           onChange={handleClick}
           className="btn-check"
@@ -238,6 +247,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={5}
           onChange={handleClick}
           className="btn-check"
@@ -267,6 +277,7 @@ function MorningReflectionPage() {
         <div className="btn-group">
           <input
           type="radio"
+          required
           value={1}
           onChange={handleClick}
           className="btn-check"
@@ -277,6 +288,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={2}
           onChange={handleClick}
           className="btn-check"
@@ -287,6 +299,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={3}
           onChange={handleClick}
           className="btn-check"
@@ -297,6 +310,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={4}
           onChange={handleClick}
           className="btn-check"
@@ -307,6 +321,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={5}
           onChange={handleClick}
           className="btn-check"
@@ -336,6 +351,7 @@ function MorningReflectionPage() {
         <div className="btn-group">
           <input
           type="radio"
+          required
           value={1}
           onClick={handleClick}
           className="btn-check"
@@ -346,6 +362,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={2}
           onClick={handleClick}
           className="btn-check"
@@ -356,6 +373,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={3}
           onChange={handleClick}
           className="btn-check"
@@ -366,6 +384,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={4}
           onChange={handleClick}
           className="btn-check"
@@ -376,6 +395,7 @@ function MorningReflectionPage() {
 
           <input
           type="radio"
+          required
           value={5}
           onChange={handleClick}
           className="btn-check"
@@ -402,7 +422,7 @@ function MorningReflectionPage() {
 
       <button
       type="submit"
-      className="btn btn-primary mdb-3 top-buffer"
+      className="btn btn-rounded btn-primary mdb-3 top-buffer"
       >Submit Reflection</button> 
       {/* Handles submit of entire form */}
     </form>

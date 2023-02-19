@@ -1,17 +1,12 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
-import {useSelector} from 'react-redux';
 
-function* postMorningAnswers(action) {
+function* createMorningReflection(action) {
   try {
     yield axios({
       method: 'POST',
       url: '/api/morning-reflection',
-      data: action.payload
-    })
-    yield put({
-      type: 'UPDATE_MORNING_REFLECTION',
-      payload: action.payload.user_id,
+      data: action.payload,
     })
   }
   catch (error) {
@@ -19,8 +14,7 @@ function* postMorningAnswers(action) {
   }
 }
 
-function* updateMorningReflection(action) {
-
+function* updateMorningReflectionStore(action) {
   try {
     const id = action.payload
     const response = yield axios({
@@ -37,9 +31,9 @@ function* updateMorningReflection(action) {
 }
 
 
-function* userSaga() {
-  yield takeEvery('POST_MORNING_ANSWERS', postMorningAnswers);
-  yield takeEvery('UPDATE_MORNING_REFLECTION', updateMorningReflection);
+function* morningReflectionSaga() {
+  yield takeEvery('CREATE_MORNING_REFLECTION', createMorningReflection);
+  yield takeEvery('UPDATE_REFLECTION_STORE', updateMorningReflectionStore);
 }
 
-export default userSaga;
+export default morningReflectionSaga;
