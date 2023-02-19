@@ -12,7 +12,8 @@ router.get('/:id', (req, res) => {
   .then((response) => {
     res.send(response.rows);
   }).catch((error) => {
-    console.error('Error in streaks.router /:id GET:', error)
+    console.error('Error in streaks.router /:id GET:', error);
+    res.sendStatus(500);
   })
 });
 
@@ -37,7 +38,8 @@ router.put('/', (req, res) => {
   .then((response) => {
     res.sendStatus(200);
   }).catch((error) => {
-    console.error('Error in streaks.router PUT:', error)
+    console.error('Error in streaks.router PUT:', error);
+    res.sendStatus(500);
   })
 });
 

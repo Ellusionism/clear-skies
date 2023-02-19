@@ -56,7 +56,7 @@ function MorningReflectionPage() {
     <form
     className="text-center form"
     onSubmit={handleSubmit}>
-      <h2 className="top-buffer">Morning Reflection</h2>
+      <h2 className="top-buffer text-success">Morning Reflection</h2>
 
       {/* looking_forward Input */}
       <div className="form-outline top-buffer">
@@ -69,7 +69,7 @@ function MorningReflectionPage() {
       name="looking_forward"
       className="form-control border" />
       <label
-      className="form-label"
+      className="form-label text-muted"
       htmlFor="looking-forward"
       >What am I looking forward to the most today?</label>
       {/* comment input for looking forward prompt */}
@@ -85,7 +85,7 @@ function MorningReflectionPage() {
         name="greatest_challenge"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="greatest-challenge"
         >What will be my greatest challenge today?</label>
         {/* comment input for greatest challenge prompt */}
@@ -101,7 +101,7 @@ function MorningReflectionPage() {
         name="three_tasks"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="three-tasks"
         >What 3 tasks do I need to get done today?</label>
         {/* comment input for three tasks prompt */}
@@ -117,7 +117,7 @@ function MorningReflectionPage() {
         name="attention_support"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="attention-support"
         >Who needs my attention/support most today?</label>
         {/* comment input for attention/support prompt */}
@@ -135,7 +135,7 @@ function MorningReflectionPage() {
             id="physical-1"
             name="physical_rating"
             />
-            <label className="btn btn-secondary" htmlFor="physical-1">1</label>
+            <label className="btn btn-success" htmlFor="physical-1">1</label>
 
             <input
             type="radio"
@@ -146,7 +146,7 @@ function MorningReflectionPage() {
             id="physical-2"
             name="physical_rating"
             />
-            <label className="btn btn-secondary" htmlFor="physical-2">2</label>
+            <label className="btn btn-success" htmlFor="physical-2">2</label>
 
             <input
             type="radio"
@@ -157,7 +157,7 @@ function MorningReflectionPage() {
             id="physical-3"
             name="physical_rating"
             />
-            <label className="btn btn-secondary" htmlFor="physical-3">3</label>
+            <label className="btn btn-success" htmlFor="physical-3">3</label>
 
             <input
             type="radio"
@@ -168,7 +168,7 @@ function MorningReflectionPage() {
             id="physical-4"
             name="physical_rating"
             />
-            <label className="btn btn-secondary" htmlFor="physical-4">4</label>
+            <label className="btn btn-success" htmlFor="physical-4">4</label>
 
             <input
             type="radio"
@@ -179,7 +179,7 @@ function MorningReflectionPage() {
             id="physical-5"
             name="physical_rating"
             />
-            <label className="btn btn-secondary" htmlFor="physical-5">5</label>
+            <label className="btn btn-success" htmlFor="physical-5">5</label>
           </div>
           {/* Radio button group for physical health rating */}
         </div>
@@ -192,7 +192,7 @@ function MorningReflectionPage() {
         name="physical_comment"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="physical-comment"
         >If not a 5, what can I do to improve it today?</label>
         {/* comment input for physical health rating */}
@@ -210,7 +210,7 @@ function MorningReflectionPage() {
           id="mental-1"
           name="mental_rating"
           />
-          <label className="btn btn-secondary" htmlFor="mental-1">1</label>
+          <label className="btn btn-success" htmlFor="mental-1">1</label>
 
           <input
           type="radio"
@@ -221,7 +221,7 @@ function MorningReflectionPage() {
           id="mental-2"
           name="mental_rating"
           />
-          <label className="btn btn-secondary" htmlFor="mental-2">2</label>
+          <label className="btn btn-success" htmlFor="mental-2">2</label>
 
           <input
           type="radio"
@@ -232,7 +232,7 @@ function MorningReflectionPage() {
           id="mental-3"
           name="mental_rating"
           />
-          <label className="btn btn-secondary" htmlFor="mental-3">3</label>
+          <label className="btn btn-success" htmlFor="mental-3">3</label>
 
           <input
           type="radio"
@@ -243,7 +243,7 @@ function MorningReflectionPage() {
           id="mental-4"
           name="mental_rating"
           />
-          <label className="btn btn-secondary" htmlFor="mental-4">4</label>
+          <label className="btn btn-success" htmlFor="mental-4">4</label>
 
           <input
           type="radio"
@@ -254,7 +254,7 @@ function MorningReflectionPage() {
           id="mental-5"
           name="mental_rating"
           />
-          <label className="btn btn-secondary" htmlFor="mental-5">5</label>
+          <label className="btn btn-success" htmlFor="mental-5">5</label>
         </div>
         {/* Radio button group for mental health rating */}
       </div>
@@ -267,7 +267,7 @@ function MorningReflectionPage() {
       name="mental_comment"
       className="form-control border" />
       <label
-      className="form-label"
+      className="form-label text-muted"
       htmlFor="mental-comment">If not a 5, what can I do to improve it today?</label>
       {/* comment input for mental health rating */}
       </div>
@@ -284,7 +284,7 @@ function MorningReflectionPage() {
           id="emotional-1"
           name="emotional_rating"
           />
-          <label className="btn btn-secondary" htmlFor="emotional-1">1</label>
+          <label className="btn btn-success" htmlFor="emotional-1">1</label>
 
           <input
           type="radio"
@@ -295,7 +295,7 @@ function MorningReflectionPage() {
           id="emotional-2"
           name="emotional_rating"
           />
-          <label className="btn btn-secondary" htmlFor="emotional-2">2</label>
+          <label className="btn btn-success" htmlFor="emotional-2">2</label>
 
           <input
           type="radio"
@@ -306,7 +306,7 @@ function MorningReflectionPage() {
           id="emotional-3"
           name="emotional_rating"
           />
-          <label className="btn btn-secondary" htmlFor="emotional-3">3</label>
+          <label className="btn btn-success" htmlFor="emotional-3">3</label>
 
           <input
           type="radio"
@@ -317,7 +317,7 @@ function MorningReflectionPage() {
           id="emotional-4"
           name="emotional_rating"
           />
-          <label className="btn btn-secondary" htmlFor="emotional-4">4</label>
+          <label className="btn btn-success" htmlFor="emotional-4">4</label>
 
           <input
           type="radio"
@@ -328,7 +328,7 @@ function MorningReflectionPage() {
           id="emotional-5"
           name="emotional_rating"
           />
-          <label className="btn btn-secondary" htmlFor="emotional-5">5</label>
+          <label className="btn btn-success" htmlFor="emotional-5">5</label>
         </div>
         {/* Radio button group for emotional health rating */}
       </div>
@@ -341,7 +341,7 @@ function MorningReflectionPage() {
       name="emotional_comment"
       className="form-control border" />
       <label
-      className="form-label"
+      className="form-label text-muted"
       htmlFor="emotional-comment">If not a 5, what can I do to improve it today?</label>
       {/* comment input for emotional health rating */}
       </div>
@@ -358,7 +358,7 @@ function MorningReflectionPage() {
           id="love-in-life-1"
           name="love_in_life_rating"
           />
-          <label className="btn btn-secondary" htmlFor="love-in-life-1">1</label>
+          <label className="btn btn-success" htmlFor="love-in-life-1">1</label>
 
           <input
           type="radio"
@@ -369,7 +369,7 @@ function MorningReflectionPage() {
           id="love-in-life-2"
           name="love_in_life_rating"
           />
-          <label className="btn btn-secondary" htmlFor="love-in-life-2">2</label>
+          <label className="btn btn-success" htmlFor="love-in-life-2">2</label>
 
           <input
           type="radio"
@@ -380,7 +380,7 @@ function MorningReflectionPage() {
           id="love-in-life-3"
           name="love_in_life_rating"
           />
-          <label className="btn btn-secondary" htmlFor="love-in-life-3">3</label>
+          <label className="btn btn-success" htmlFor="love-in-life-3">3</label>
 
           <input
           type="radio"
@@ -391,7 +391,7 @@ function MorningReflectionPage() {
           id="love-in-life-4"
           name="love_in_life_rating"
           />
-          <label className="btn btn-secondary" htmlFor="love-in-life-4">4</label>
+          <label className="btn btn-success" htmlFor="love-in-life-4">4</label>
 
           <input
           type="radio"
@@ -402,7 +402,7 @@ function MorningReflectionPage() {
           id="love-in-life-5"
           name="love_in_life_rating"
           />
-          <label className="btn btn-secondary" htmlFor="love-in-life-5">5</label>
+          <label className="btn btn-success" htmlFor="love-in-life-5">5</label>
         </div>
         {/* Radio button group for love in life rating */}
       </div>
@@ -415,7 +415,7 @@ function MorningReflectionPage() {
         name="love_in_life_comment"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="love-in-life-comment">If not a 5, what can I do to improve it today?</label>
         {/* comment input for love in life rating */}
       </div>

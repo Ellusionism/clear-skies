@@ -49,4 +49,18 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete('/:id', (req, res) => {
+  const sqlQuery = `
+  DELETE FROM "user"
+    WHERE "id" = $1;
+  `;
+  pool.query(sqlQuery, [req.params.id])
+  .then((response) => {
+    res.sendStatus(200);
+  }).catch((err) => {
+    console.log('User deletion failed: ', err);
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;

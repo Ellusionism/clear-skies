@@ -20,6 +20,7 @@ router.get(`/:id`, (req, res) => {
     res.send(response.rows);
   }).catch((error) => {
     console.error('Error in morning.reflection.router GET', error);
+    res.sendStatus(500);
   });
 });
 
@@ -63,7 +64,8 @@ router.post('/', (req, res) => {
   .then((response) => {
     res.sendStatus(200);
   }).catch((error) => {
-    console.error('Error in morning.reflection.router POST:', error)
+    console.error('Error in morning.reflection.router POST:', error);
+    res.sendStatus(500);
   })
 });
 

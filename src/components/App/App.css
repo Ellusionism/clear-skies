@@ -8,10 +8,10 @@ button {
   padding: 1vh;
 }
 
-.top-buffer {
-  margin-top: 5vh;
+.logo {
+  max-width: 50vw;
 }
 
-.logo {
-  max-width: 60vw;
+.top-buffer {
+  margin-top: 5vh;
 }

@@ -22,7 +22,6 @@ import MorningReflectionPage from '../MorningReflectionPage/MorningReflectionPag
 import EveningReflectionPage from '../EveningReflectionPage/EveningReflectionPage';
 
 import './App.css';
-import * as mdb from 'mdb-ui-kit';
 
 // async function load() {
 //   let mdb = await import('mdb-ui-kit');
@@ -66,24 +65,16 @@ function App() {
               <AboutPage />
           </Route>
 
-          <ProtectedRoute
-            // logged in shows ReviewPage else shows LoginPage
-            exact
-            path="/review"
-          >
-            <ReviewPage />
-          </ProtectedRoute>
-
           <Route
             exact
             path="/login"
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /home page
+              // redirect to the Homepage
               <Redirect to="/home" />
               :
-              // Otherwise, show the login page
+              // Otherwise, show the LoginPage
               <LoginPage />
             }
           </Route>
@@ -94,16 +85,17 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /home page
+              // redirect to the Homepage
               <Redirect to="/home" />
               :
-              // Otherwise, show the login page
+              // Otherwise, show the RegisterPage
               <RegisterPage />
             }
           </Route>
 
 
           <ProtectedRoute
+          // logged in shows MorningReflectionPage else shows LoginPage
             exact
             path="/morning-reflection"
           >
@@ -111,10 +103,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+          // logged in shows EveningReflectionPage else shows LoginPage
             exact
             path="/evening-reflection"
           >
             <EveningReflectionPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ReviewPage else shows LoginPage
+            exact
+            path="/review"
+          >
+            <ReviewPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
