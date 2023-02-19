@@ -1,19 +1,13 @@
 import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
 import DeleteUserButton from './components/DeleteUserButton/DeleteUserButton';
 import StreaksCard from './components/StreaksCard/StreaksCard';
 
 function ReviewPage() {
   const user = useSelector((store) => store.user);
   const review = useSelector((store) => store.review.review);
-  const streaks = useSelector((store) => store.streaks.streaks);
 
   const dispatch = useDispatch();
-  const date = moment();
-
-  const currentDate = date.format('YYYY-MM-DD');
-  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
   useEffect(() => {
     dispatch({
