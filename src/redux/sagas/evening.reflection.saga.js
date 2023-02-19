@@ -18,7 +18,7 @@ function* createEveningReflection(action) {
   }
 }
 
-function* updateEveningReflectionStore(action) {
+function* getEveningReflectionStore(action) {
   try {
     const id = action.payload
     const response = yield axios({
@@ -38,7 +38,7 @@ function* updateEveningReflectionStore(action) {
 
 function* eveningReflectionSaga() {
   yield takeEvery('CREATE_EVENING_REFLECTION', createEveningReflection)
-  yield takeEvery('UPDATE_REFLECTION_STORE', updateEveningReflectionStore);
+  yield takeEvery('GET_REFLECTION_STORE', getEveningReflectionStore);
 }
 
 export default eveningReflectionSaga;

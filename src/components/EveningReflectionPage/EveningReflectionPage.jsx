@@ -7,6 +7,7 @@ function EveningReflectionPage() {
 
     const user = useSelector((store) => store.user);
     const morningAnswers = useSelector((store) => store.morningReflection.morningAnswers);
+    const streaks = useSelector((store) => store.streaks.streaks);
     console.log(morningAnswers)
 
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function EveningReflectionPage() {
 
   const date = moment();
   const currentDate = date.format('YYYY-MM-DD');
+  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
   const [eveningAnswers, setEveningAnswers] = useState({
     user_id: user.id,
@@ -22,6 +24,29 @@ function EveningReflectionPage() {
     end_of_day_rating: 0,
     end_of_day_comment: '',
   });
+
+  const [updatedStreak, setUpdatedStreak] = useState({
+    user_id: user.id,
+    previous_reflection: currentDate,
+    current_streak: streaks.current_streak,
+    longest_streak: streaks.longest_streak,
+  });
+
+  const updateStreaks = () => {
+    const previousReflection = streaks.previous_reflection && streak.previous_reflection.substring(0, 10);
+    const currentStreak = Number(streaks.current_streak);
+    const longestStreak = Number(streaks.longest_streak);
+    if (previousReflection === previousDate) {
+      newStreak = currentStreak + 1;
+      setUpdatedStreak({...updatedStreaks, current_streak: newStreak})
+      if (newStreak >= longestStreak) {
+        newLongestStreak = newStreak;
+        setUpdatedStreak({...updatedStreaks, longest_streak: newLongestStreak})
+      }
+    } else {
+      setUpdatedStreak({...updatedStreaks, current_streak: 1})
+    }
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -41,8 +66,9 @@ function EveningReflectionPage() {
       type: 'SET_EVENING_REFLECTION',
       payload: eveningAnswers,
     })
+    updateStreaks();
     history.push('/home')
-  } // submits all answers to the store, and returns the user to the homepage
+  } // submits all answers to the store, updates their streaks data, and returns the user to the homepage
 
   return (
     <div className="text-center">
@@ -216,4 +242,4 @@ function EveningReflectionPage() {
   )
 };
 
-export default EveningReflectionPage
+export default EveningReflectionPage;

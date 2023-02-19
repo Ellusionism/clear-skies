@@ -4,6 +4,7 @@ import user from './user.reducer';
 import morningReflection from './morning.reflection.reducer';
 import eveningReflection from './evening.reflection.reducer';
 import review from './review.reducer';
+import streaks from './streaks.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   morningReflection, // will store the answers for that day's morning reflection
   eveningReflection, // will store the answers for that day's evening reflection
   review, // will store previous answers for display on the review page
+  streaks, // will store data for user's reflection streaks
 });
 
 export default rootReducer;

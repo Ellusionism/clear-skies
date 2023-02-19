@@ -13,11 +13,14 @@ function Homepage() {
   const date = moment();
 
   const currentDate = date.format('YYYY-MM-DD');
-  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
   useEffect(() => {
     dispatch({
-      type: 'UPDATE_REFLECTION_STORE',
+      type: 'GET_REFLECTION_STORE',
+      payload: user.id,
+    });
+    dispatch({
+      type: 'GET_STREAKS',
       payload: user.id,
     });
     inputDisabler();
