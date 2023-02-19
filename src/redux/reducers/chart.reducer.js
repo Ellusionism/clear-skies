@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-const review = (state = [], action) => {
+const chartData = (state = [], action) => {
   switch (action.type) {
-    case 'SET_DEFAULT_REVIEW':
+    case 'SET_CHART_DATA':
       return action.payload;
     default:
       return state;
@@ -10,5 +10,5 @@ const review = (state = [], action) => {
 };
 
 export default combineReducers({
-  review,
+  chartData,
 });
