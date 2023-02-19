@@ -18,8 +18,26 @@ function* getDefaultReview(action) {
   }
 }
 
+function* getChartData(action) {
+  try {
+    const id = action.payload;
+    const response = yield axios({
+      method: 'GET',
+      url: `/api/review/chart/${id}`,
+    })
+    yield put ({
+      type: 'SET_CHART_DATA',
+      payload: response.data,
+    })
+  }
+  catch (error) {
+    console.log('Error in review.saga /chart GET', error);
+  }
+}
+
 function* reviewSaga() {
   yield takeEvery('GET_DEFAULT_REVIEW', getDefaultReview);
+  yield takeEvery('GET_CHART_DATA', getChartData);
 }
 
 export default reviewSaga;
