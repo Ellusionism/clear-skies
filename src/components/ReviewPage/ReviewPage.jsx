@@ -30,6 +30,8 @@ function ReviewPage() {
 
   const checkStreaks = () => {
     const previousReflection = streaks.previous_reflection ? streaks.previous_reflection.substring(0, 10) : null;
+    const longestStreak = streaks.longest_streak ? streaks.longest_streak : null;
+
     if (previousReflection === currentDate) {
       return;
     } else if (previousReflection === previousDate) {
@@ -39,6 +41,9 @@ function ReviewPage() {
         type: 'RESET_STREAK',
         payload: {
           id: user.id,
+          previous_reflection: previousReflection,
+          current_streak: 0,
+          longest_streak: longestStreak,
         }
       })
     }

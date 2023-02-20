@@ -41,7 +41,7 @@ function* updateStreaks(action) {
 }
 
 function* resetStreak(action) {
-  const id = action.payload;
+  const id = action.payload.id;
   try {
     yield axios({
       method: 'PUT',

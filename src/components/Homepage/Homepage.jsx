@@ -48,7 +48,7 @@ function Homepage() {
       eveningButton.classList.add('disabled');
     } else {
       morningButton.classList.remove('disabled');
-      eveningButton.classList.remove('disabled');
+      eveningButton.classList.add('disabled');
     };
   };
 
