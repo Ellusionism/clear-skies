@@ -8,7 +8,7 @@ router.get(`/:id`, (req, res) => {
     WHERE "user_id" = $1
     ORDER BY "id" DESC
     LIMIT 1;
-  `
+  `;
   const sqlValues = [req.params.id];
   pool.query(sqlQuery, sqlValues)
   .then((response) => {

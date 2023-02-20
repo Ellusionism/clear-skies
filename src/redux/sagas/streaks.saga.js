@@ -30,9 +30,26 @@ function* updateStreaks(action) {
       type: 'SET_STREAKS',
       payload: {
         previous_reflection: streaks.previous_reflection,
-        current_streak: streak.current_streak,
-        longest_streak: streak.longest_streak,
+        current_streak: streaks.current_streak,
+        longest_streak: streaks.longest_streak,
       }
+    })
+  }
+  catch (error) {
+    console.log('Error in streaks.saga POST', error);
+  }
+}
+
+function* resetStreak(action) {
+  const id = action.payload;
+  try {
+    yield axios({
+      method: 'PUT',
+      url: `/api/streaks/reset`,
+      data: id,
+    })
+    yield put({
+      type: 'RESET_STREAK_STORE',
     })
   }
   catch (error) {
@@ -43,6 +60,7 @@ function* updateStreaks(action) {
 function* streaksSaga() {
   yield takeEvery('GET_STREAKS', getStreaks);
   yield takeEvery('UPDATE_STREAKS', updateStreaks);
+  yield takeEvery('RESET_STREAK', resetStreak);
 }
 
 export default streaksSaga;

@@ -14,7 +14,6 @@ function EveningReflectionPage() {
   const date = moment();
 
   const currentDate = date.format('YYYY-MM-DD');
-  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
   const [eveningAnswers, setEveningAnswers] = useState({
     user_id: user.id,
@@ -22,13 +21,6 @@ function EveningReflectionPage() {
     three_positives: '',
     end_of_day_rating: 0,
     end_of_day_comment: '',
-  });
-
-  const [updatedStreak, setUpdatedStreak] = useState({
-    user_id: user.id,
-    previous_reflection: currentDate,
-    current_streak: streaks.current_streak,
-    longest_streak: streaks.longest_streak,
   });
 
   useEffect(() => {
@@ -39,23 +31,31 @@ function EveningReflectionPage() {
   }, [])
 
   const updateStreaks = () => {
-    const previousReflection = streaks.previous_reflection && streak.previous_reflection.substring(0, 10);
-    const currentStreak = Number(streaks.current_streak);
-    const longestStreak = Number(streaks.longest_streak);
-    if (previousReflection === previousDate) {
-      newStreak = currentStreak + 1;
-      setUpdatedStreak({...updatedStreaks, current_streak: newStreak})
-      if (newStreak >= longestStreak) {
-        newLongestStreak = newStreak;
-        setUpdatedStreak({...updatedStreaks, longest_streak: newLongestStreak})
-      }
+    const currentStreak = streaks.current_streak;
+    const longestStreak = streaks.longest_streak;
+    const newStreak = streaks.current_streak + 1;
+    console.log(newStreak);
+    if (newStreak > longestStreak) {
+      dispatch({
+        type: 'UPDATE_STREAKS',
+        payload: {
+          user_id: user.id,
+          previous_reflection: currentDate,
+          current_streak: newStreak,
+          longest_streak: newStreak,
+        }
+      })
     } else {
-      setUpdatedStreak({...updatedStreaks, current_streak: 1})
+      dispatch({
+        type: 'UPDATE_STREAKS',
+        payload: {
+          user_id: user.id,
+          previous_reflection: currentDate,
+          current_streak: newStreak,
+          longest_streak: longestStreak,
+        }
+      })
     }
-    dispatch({
-      type: 'UPDATE_STREAKS',
-      payload: updatedStreak,
-    })
   }
 
   const handleChange = (event) => {
@@ -67,23 +67,27 @@ function EveningReflectionPage() {
     setEveningAnswers({...eveningAnswers, [event.target.name]: Number(event.target.value)});
   } // updates state for all radio inputs onClick
 
-  const handleSubmit = (event) => {
+  async function handleSubmit (event) {
+    await updateStreaks();
     dispatch({
       type: 'CREATE_EVENING_REFLECTION',
-      payload: eveningAnswers
-    })
+      payload: eveningAnswers,
+    });
     dispatch({
       type: 'SET_EVENING_REFLECTION',
       payload: eveningAnswers,
-    })
-    updateStreaks();
-    history.push('/home')
+    });
+    dispatch({
+      type: 'GET_REFLECTION_STORE',
+      payload: user.id,
+    });
+    history.push('/home');
   } // submits all answers to the store, updates their streaks data, and returns the user to the homepage
 
   return (
     <div className="text-center">
       <button
-      className="btn btn-rounded btn-primary top-buffer"
+      className="btn btn-rounded btn-success top-buffer"
       type="button"
       data-mdb-toggle="collapse"
       data-mdb-target="#morningAnswers"
@@ -203,7 +207,7 @@ function EveningReflectionPage() {
             id="end-of-day-rating-1"
             name="end_of_day_rating"
             />
-            <label className="btn btn-secondary" htmlFor="end-of-day-rating-1"
+            <label className="btn btn-success" htmlFor="end-of-day-rating-1"
             >1</label>
 
             <input
@@ -215,7 +219,7 @@ function EveningReflectionPage() {
             id="end-of-day-rating-2"
             name="end_of_day_rating"
             />
-            <label className="btn btn-secondary" htmlFor="end-of-day-rating-2"
+            <label className="btn btn-success" htmlFor="end-of-day-rating-2"
             >2</label>
 
             <input
@@ -227,7 +231,7 @@ function EveningReflectionPage() {
             id="end-of-day-rating-3"
             name="end_of_day_rating"
             />
-            <label className="btn btn-secondary" htmlFor="end-of-day-rating-3"
+            <label className="btn btn-success" htmlFor="end-of-day-rating-3"
             >3</label>
 
             <input
@@ -239,7 +243,7 @@ function EveningReflectionPage() {
             id="end-of-day-rating-4"
             name="end_of_day_rating"
             />
-            <label className="btn btn-secondary" htmlFor="end-of-day-rating-4"
+            <label className="btn btn-success" htmlFor="end-of-day-rating-4"
             >4</label>
 
             <input
@@ -251,7 +255,7 @@ function EveningReflectionPage() {
             id="end-of-day-rating-5"
             name="end_of_day_rating"
             />
-            <label className="btn btn-secondary" htmlFor="end-of-day-rating-5"
+            <label className="btn btn-success" htmlFor="end-of-day-rating-5"
             >5</label>
           </div>
           {/* Radio button group for end of day rating */}
@@ -274,7 +278,7 @@ function EveningReflectionPage() {
 
         <button
         type="submit"
-        className="btn btn-rounded btn-primary mdb-3 top-buffer"
+        className="btn btn-rounded btn-success mdb-3 top-buffer"
         >Submit Reflection</button> 
         {/* Handles submit of entire form */}
       </form>

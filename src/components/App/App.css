@@ -4,6 +4,10 @@ button {
   margin: 1vh;
 }
 
+.chart-box {
+  width: 100%;
+}
+
 .form {
   padding: 1vh;
 }

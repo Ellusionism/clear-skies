@@ -6,12 +6,14 @@ import moment from 'moment';
 function MorningReflectionPage() {
 
   const user = useSelector((store) => store.user);
+  const streaks = useSelector((store) => store.streaks.streaks);
 
   const dispatch = useDispatch();
   const history = useHistory();
   const date = moment();
 
   const currentDate = date.format('YYYY-MM-DD');
+  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
   const [morningAnswers, setMorningAnswers] = useState({
     user_id: user.id,
@@ -29,6 +31,22 @@ function MorningReflectionPage() {
     love_in_life_rating: 0,
     love_in_life_comment: '',
   });
+
+  const checkStreaks = () => {
+    const previousReflection = streaks.previous_reflection ? streaks.previous_reflection.substring(0, 10) : null;
+    if (previousReflection === currentDate) {
+      return;
+    } else if (previousReflection === previousDate) {
+      return;
+    } else {
+      dispatch({
+        type: 'RESET_STREAK',
+        payload: {
+          id: user.id,
+        }
+      })
+    }
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -49,6 +67,7 @@ function MorningReflectionPage() {
       type: 'SET_MORNING_REFLECTION',
       payload: morningAnswers
     })
+    checkStreaks();
     history.push('/home');
   } // submits all answers to the store, and returns the user to the homepage
 
@@ -422,7 +441,7 @@ function MorningReflectionPage() {
 
       <button
       type="submit"
-      className="btn btn-rounded btn-primary mdb-3 top-buffer"
+      className="btn btn-rounded btn-success mdb-3 top-buffer"
       >Submit Reflection</button> 
       {/* Handles submit of entire form */}
     </form>

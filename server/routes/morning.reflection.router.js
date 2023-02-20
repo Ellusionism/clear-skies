@@ -1,10 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const moment = require('moment');
-
-const date = moment();
-  const currentDate = date.format('YYYY-MM-DD');
 
 router.get(`/:id`, (req, res) => {
   const sqlQuery = `
@@ -12,8 +8,7 @@ router.get(`/:id`, (req, res) => {
     WHERE "user_id" = $1
     ORDER BY "id" DESC
     LIMIT 1;
-  `
-  console.log(req.params)
+  `;
   const sqlValues = [req.params.id];
   pool.query(sqlQuery, sqlValues)
   .then((response) => {
