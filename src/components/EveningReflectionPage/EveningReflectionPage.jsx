@@ -81,6 +81,14 @@ function EveningReflectionPage() {
       type: 'GET_REFLECTION_STORE',
       payload: user.id,
     });
+    dispatch({
+      type: 'GET_STREAKS',
+      payload: user.id,
+    });
+    dispatch({
+      type: 'GET_CHART_DATA',
+      payload: user.id,
+    })
     history.push('/home');
   } // submits all answers to the store, updates their streaks data, and returns the user to the homepage
 
