@@ -8,6 +8,10 @@ function* createMorningReflection(action) {
       url: '/api/morning-reflection',
       data: action.payload,
     })
+    yield put ({
+      type: 'SET_MORNING_REFLECTION',
+      payload: action.payload,
+    })
   }
   catch (error) {
     console.log('Error in morning.reflection.saga POST', error);

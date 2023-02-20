@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
@@ -14,56 +14,41 @@ function Homepage() {
   const date = moment();
 
   const currentDate = date.format('YYYY-MM-DD');
-  const previousDate = date.subtract(1, 'd').format('YYYY-MM-DD');
 
-  const [updatedStreak, setUpdatedStreak] = useState({
-    user_id: user.id,
-    previous_reflection: streaks.previous_reflection,
-    current_streak: streaks.current_streak,
-    longest_streak: streaks.longest_streak,
-  });
-
-  useEffect(() => {
-    dispatch({
+  async function load() {
+    await dispatch({
       type: 'GET_REFLECTION_STORE',
       payload: user.id,
     });
-    dispatch({
+    await dispatch({
       type: 'GET_STREAKS',
       payload: user.id,
     });
     inputDisabler();
-    checkStreaks();
+  }
+
+  useEffect(() => {
+    load();
   }, []);
 
   const inputDisabler = () => {
+    const previousReflection = streaks.previous_reflection && streaks.previous_reflection.substring(0, 10);
     const morningDate = morningAnswers.date && morningAnswers.date.substring(0, 10);
     const eveningDate = eveningAnswers.date && eveningAnswers.date.substring(0, 10);
     const morningButton = document.getElementById('morningButton');
     const eveningButton = document.getElementById('eveningButton');
-    if (morningDate === currentDate) {
+    if (previousReflection === currentDate) {
       morningButton.classList.add('disabled');
+      eveningButton.classList.add('disabled');
+      return;
+    } else if (morningDate == currentDate) {
+      morningButton.classList.add('disabled');
+      eveningButton.classList.remove('disabled');
+      return;
     } else {
       morningButton.classList.remove('disabled');
-    };
-    if (morningDate === currentDate
-      && eveningDate != currentDate) {
-      eveningButton.classList.remove('disabled');
-    } else {
       eveningButton.classList.add('disabled');
     };
-  };
-
-  const checkStreaks = () => {
-    const previousReflection = streaks.previous_reflection && streak.previous_reflection.substring(0, 10);
-    if (previousReflection != currentDate &&
-      previousReflection != previousDate) {
-        setUpdatedStreak({...updatedStreaks, current_streak: 0});
-        dispatch({
-          type: 'UPDATE_STREAKS',
-          payload: updatedStreak,
-        })
-      }
   };
 
   const morningReflectionClickHandler = (event) => {
@@ -90,7 +75,7 @@ function Homepage() {
         type="button"
         onClick={event => morningReflectionClickHandler(event)}>
         Morning Reflection</button>
-        <button className="btn btn-rounded btn-success disabled"
+        <button className="btn btn-rounded btn-success"
         id="eveningButton"
         type="button"
         onClick={event => eveningReflectionClickHandler(event)}>

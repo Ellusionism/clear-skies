@@ -6,7 +6,7 @@ function* getChartData(action) {
     const id = action.payload;
     const response = yield axios({
       method: 'GET',
-      url: `/api/review/chart/${id}`,
+      url: `/api/chart/${id}`,
     })
     yield put ({
       type: 'SET_CHART_DATA',
@@ -14,7 +14,7 @@ function* getChartData(action) {
     })
   }
   catch (error) {
-    console.log('Error in review.saga /chart GET', error);
+    console.log('Error in chart.saga GET', error);
   }
 }
 

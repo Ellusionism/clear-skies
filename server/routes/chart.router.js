@@ -6,8 +6,7 @@ router.get('/:id', (req, res) => {
   const sqlQuery = `
   SELECT
     "evening_answers"."date",
-    "evening_answers"."end_of_day_rating",
-    "evening_answers"."end_of_day_comment"
+    "evening_answers"."end_of_day_rating"
     FROM "evening_answers"
     WHERE "evening_answers"."user_id" = $1
   ORDER BY "date" DESC

@@ -43,4 +43,19 @@ router.put('/', (req, res) => {
   })
 });
 
+router.put('/reset', (req, res) => {
+  const sqlQuery = `
+  UPDATE "user"
+    SET "current_streak" = 0
+    WHERE "id" = $1;
+  `;
+  pool.query(sqlQuery, [req.body.id])
+  .then((response) => {
+    res.sendStatus(200);
+  }).catch((error) => {
+    console.error('Error in streaks.router /reset PUT:', error);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;

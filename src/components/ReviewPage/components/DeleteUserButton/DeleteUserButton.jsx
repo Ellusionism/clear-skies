@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 function DeleteUserButton() {
@@ -24,7 +23,7 @@ function DeleteUserButton() {
       >Delete My Account</button>
     <div
     className="modal fade"
-    id="deleteUserModal" tabindex="-1"
+    id="deleteUserModal" tabIndex="-1"
     aria-labelledby="deleteUserModalLabel"
     aria-hidden="true">
       <div className="modal-dialog">
