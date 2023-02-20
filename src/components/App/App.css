@@ -4,12 +4,26 @@ button {
   margin: 1vh;
 }
 
+.avatar {
+  width: 50vw;
+}
+
 .chart-box {
   width: 100%;
 }
 
 .form {
   padding: 1vh;
+}
+
+.github-link {
+  background-color: #333333;
+  margin: 1vh;
+}
+
+.linkedin-link {
+  background-color: #0082ca;
+  margin: 1vh;
 }
 
 .logo {

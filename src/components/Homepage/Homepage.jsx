@@ -20,16 +20,20 @@ function Homepage() {
       type: 'GET_REFLECTION_STORE',
       payload: user.id,
     });
-    await dispatch({
-      type: 'GET_STREAKS',
-      payload: user.id,
-    });
     inputDisabler();
   }
 
   useEffect(() => {
     load();
-  }, []);
+    dispatch({
+      type: 'GET_STREAKS',
+      payload: user.id,
+    });
+    dispatch({
+      type: 'GET_CHART_DATA',
+      payload: user.id,
+    })
+  }, [dispatch]);
 
   const inputDisabler = () => {
     const previousReflection = streaks.previous_reflection && streaks.previous_reflection.substring(0, 10);
