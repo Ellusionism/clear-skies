@@ -40,14 +40,15 @@ function Homepage() {
     if (previousReflection === currentDate) {
       morningButton.classList.add('disabled');
       eveningButton.classList.add('disabled');
-      return;
-    } else if (morningDate == currentDate) {
+    } else if ((morningDate === currentDate) && (eveningDate != currentDate)) {
       morningButton.classList.add('disabled');
       eveningButton.classList.remove('disabled');
-      return;
+    } else if ((morningDate === currentDate) && (eveningDate === currentDate)) {
+      morningButton.classList.add('disabled');
+      eveningButton.classList.add('disabled');
     } else {
       morningButton.classList.remove('disabled');
-      eveningButton.classList.add('disabled');
+      eveningButton.classList.remove('disabled');
     };
   };
 
