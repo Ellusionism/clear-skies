@@ -58,6 +58,16 @@ function EveningReflectionPage() {
     }
   }
 
+  const fillEveningForm = () => {
+    setEveningAnswers({
+      user_id: user.id,
+      date: currentDate,
+      three_positives: `I didn't mess up during my presentation, we got some pretty good options for client projects, and I applied for a lot of jobs today`,
+      end_of_day_rating: 4,
+      end_of_day_comment: `My presentation went pretty well`,
+    });
+  }
+
   const handleChange = (event) => {
     event.preventDefault();
     setEveningAnswers({...eveningAnswers, [event.target.name]: event.target.value})
@@ -182,21 +192,23 @@ function EveningReflectionPage() {
       <form
       className="text-center form"
       onSubmit={handleSubmit}>
-        <h2 className="top-buffer"
+        <h2
+        className="top-buffer"
+        onClick={fillEveningForm}
         >Evening Reflection</h2>
 
-        {/* looking_forward Input */}
+        {/* three_positives Input */}
         <div className="form-outline top-buffer">
         <textarea
         required
-        value={eveningAnswers.looking_forward}
+        value={eveningAnswers.three_positives}
         onChange={handleChange}
         rows="4"
         id="three-positives"
         name="three_positives"
         className="form-control border" />
         <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="three-positives"
         >What were three positives from today?</label>
         {/* comment input for three positives prompt */}
@@ -271,14 +283,14 @@ function EveningReflectionPage() {
         <div className="form-outline top-buffer">
         <textarea
           required
-          value={eveningAnswers.love_in_life_comment}
+          value={eveningAnswers.end_of_day_comment}
           onChange={handleChange}
           rows="4"
           id="end-of-day-comment"
           name="end_of_day_comment"
           className="form-control border" />
           <label
-        className="form-label"
+        className="form-label text-muted"
         htmlFor="end-of-day-comment"
         >What do I think most influenced my rating?</label>
           {/* comment input for end of day rating */}

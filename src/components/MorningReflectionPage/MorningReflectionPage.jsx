@@ -48,6 +48,25 @@ function MorningReflectionPage() {
     }
   };
 
+  const fillMorningForm = () => {
+    setMorningAnswers({
+      user_id: user.id,
+      date: currentDate,
+      looking_forward: `Getting to finally present my solo project`,
+      greatest_challenge: `Not messing up too much during my presentation..`,
+      three_tasks: `Present my solo project, learn about our client projects, and do my laundry`,
+      attention_support: `My classmates, this is probably one of the most stressful parts of this course for all of us`,
+      physical_rating: 4,
+      physical_comment: `I need to make sure to do my physical therapy tonight`,
+      mental_rating: 3,
+      mental_comment: `Once the presentations are over I'll be less stressed`,
+      emotional_rating: 3,
+      emotional_comment: `I'm a bit tired, so my emotional capacity may be somewhat lower than usual`,
+      love_in_life_rating: 4,
+      love_in_life_comment: `I'll show support for my classmates' presentations`,
+    });
+  };
+
   const handleChange = (event) => {
     event.preventDefault();
     setMorningAnswers({...morningAnswers, [event.target.name]: event.target.value})
@@ -75,7 +94,10 @@ function MorningReflectionPage() {
     <form
     className="text-center form"
     onSubmit={handleSubmit}>
-      <h2 className="top-buffer text-success">Morning Reflection</h2>
+      <h2
+      className="top-buffer text-success"
+      onClick={fillMorningForm}
+      >Morning Reflection</h2>
 
       {/* looking_forward Input */}
       <div className="form-outline top-buffer">

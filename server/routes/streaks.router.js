@@ -49,7 +49,7 @@ router.put('/reset', (req, res) => {
     SET "current_streak" = 0
     WHERE "id" = $1;
   `;
-  pool.query(sqlQuery, [req.body])
+  pool.query(sqlQuery, [req.body.id])
   .then((response) => {
     res.sendStatus(200);
   }).catch((error) => {
